@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173f5f">
+  <title>萩・津和野・石見銀山・出雲 4日間旅行プラン</title>
+  <style>
+    :root {
+      --navy: #173f5f;
+      --blue: #2878a5;
+      --gold: #b8892d;
+      --cream: #f7f3ea;
+      --ink: #24313a;
+      --muted: #64717a;
+      --line: #d9e0e4;
+      --white: #fff;
+      --green: #31765a;
+      --red: #b34b45;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+      background: #eef2f3;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    header {
+      background: linear-gradient(135deg, #12344e, #2878a5);
+      color: white;
+      padding: 34px 18px 28px;
+    }
+
+    header .inner,
+    main {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 1.55rem;
+      line-height: 1.35;
+      margin: 0 0 10px;
+    }
+
+    .subtitle {
+      opacity: .9;
+      font-size: .93rem;
+    }
+
+    .summary {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: #ffffff20;
+      border: 1px solid #ffffff45;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: .78rem;
+    }
+
+    /* 追従ナビゲーション */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 9px 10px;
+      box-shadow: 0 2px 8px #00000010;
+    }
+
+    nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: .82rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #edf4f7;
+      margin-right: 5px;
+    }
+
+    /* スクロール位置補正 */
+    .day, section[id] {
+      scroll-margin-top: 60px;
+    }
+
+    main {
+      padding: 18px 12px 60px;
+    }
+
+    .notice {
+      background: #fff8df;
+      border-left: 5px solid var(--gold);
+      padding: 13px 14px;
+      border-radius: 10px;
+      margin: 0 0 18px;
+      font-size: .88rem;
+    }
+
+    .day {
+      background: var(--white);
+      border-radius: 16px;
+      margin: 18px 0 26px;
+      box-shadow: 0 4px 18px #263b4c12;
+      overflow: hidden;
+    }
+
+    .dayhead {
+      padding: 19px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .dayhead h2 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .dayhead p {
+      font-size: .85rem;
+      margin: 5px 0 0;
+      opacity: .88;
+    }
+
+    .route {
+      font-weight: 700;
+      color: #dcecf4;
+    }
+
+    .timeline {
+      padding: 9px 14px 16px;
+    }
+
+    .item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 72px 22px 1fr;
+      gap: 5px;
+      padding: 12px 0;
+    }
+
+    .item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 82px;
+      top: 32px;
+      bottom: -12px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .time {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: .85rem;
+      padding-top: 1px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--blue);
+      background: white;
+      border-radius: 50%;
+      margin: 5px auto;
+      z-index: 1;
+    }
+
+    .content h3 {
+      font-size: 1rem;
+      margin: 0 0 3px;
+    }
+
+    .content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 8px;
+      border-radius: 7px;
+      font-size: .72rem;
+      font-weight: 700;
+      background: #edf4f7;
+      color: var(--navy);
+    }
+
+    .tag.must {
+      background: #fff0d1;
+      color: #8b5e08;
+    }
+
+    .tag.food {
+      background: #e9f5ee;
+      color: var(--green);
+    }
+
+    .tag.drive {
+      background: #eef0f8;
+      color: #4d5a89;
+    }
+
+    .tag.optional {
+      background: #f3f3f3;
+      color: #666;
+    }
+
+    .maplinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .maplinks a {
+      display: inline-block;
+      background: #e8f2f7;
+      color: #135f86;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .78rem;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid #c7dce7;
+    }
+
+    .course {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .check {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #99a8b0;
+      border-radius: 5px;
+      vertical-align: -5px;
+      margin-right: 7px;
+    }
+
+    .check:checked {
+      background: var(--green);
+      border-color: var(--green);
+      box-shadow: inset 0 0 0 3px white;
+    }
+
+    .check:checked+h3 {
+      text-decoration: line-through;
+      color: #89949a;
+    }
+
+    .panel {
+      margin: 0 14px 16px;
+      padding: 14px;
+      border-radius: 12px;
+      background: var(--cream);
+      font-size: .86rem;
+    }
+
+    .panel h3 {
+      margin: 0 0 7px;
+      font-size: .95rem;
+      color: var(--navy);
+    }
+
+    .panel ul {
+      margin: 4px 0;
+      padding-left: 20px;
+    }
+
+    .warning {
+      background: #fff0ee;
+      border-left: 4px solid var(--red);
+    }
+
+    .reserve {
+      background: #edf7f1;
+      border-left: 4px solid var(--green);
+    }
+
+    .footer {
+      font-size: .76rem;
+      color: #687780;
+      padding: 0 8px;
+    }
+
+    .footer h2 {
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    .footer ul {
+      padding-left: 18px;
+    }
+
+    a {
+      color: #176d9b;
+    }
+
+    .top {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      text-decoration: none;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 3px 12px #0004;
+    }
+
+    @media(min-width:700px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .timeline {
+        padding: 12px 26px 22px;
+      }
+      .item {
+        grid-template-columns: 85px 25px 1fr;
+      }
+      .item:not(:last-child)::after {
+        left: 96px;
+      }
+      .panel {
+        margin: 0 26px 18px;
+      }
+    }
+
+    @media print {
+      nav, .top {
+        display: none;
+      }
+      body {
+        background: #fff;
+      }
+      .day {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <header>
+    <div class="inner">
+      <h1>萩・津和野・石見銀山・出雲<br>4日間旅行プラン</h1>
+      <div class="subtitle">2026年9月27日（日）～9月30日（水）｜レンタカー周遊</div>
+      <div class="summary">
+        <span class="pill">幕末維新</span>
+        <span class="pill">城下町・山城</span>
+        <span class="pill">世界遺産</span>
+        <span class="pill">神話の地</span>
+      </div>
+    </div>
+  </header>
+
+  <nav id="navbar">
+    <a href="#d1">9/27 萩</a>
+    <a href="#d2">9/28 津和野</a>
+    <a href="#d3">9/29 石見銀山</a>
+    <a href="#d4">9/30 出雲</a>
+    <a href="#check">直前確認</a>
+  </nav>
+
+  <main>
+    <div class="notice">
+      <strong>旅程の考え方</strong><br>
+      萩博物館は固定行程から外し、時間に余裕がある場合だけ訪問します。移動時間には駐車、徒歩、混雑による予備時間を含め、城跡や銀山では歩きやすい靴を前提にしています。
+    </div>
+
+    <!-- DAY 1 -->
+    <section class="day" id="d1">
+      <div class="dayhead">
+        <h2>9/27（日） 萩・幕末維新を巡る日</h2>
+        <p class="route">羽田 → 萩・石見空港 → 萩市街</p>
+      </div>
+      <div class="timeline">
+        <div class="item">
+          <div class="time">8:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c1">
+            <h3>羽田空港発</h3>
+            <p>ANA725便。空港には余裕をもって到着。</p>
+            <span class="tag drive">飛行機</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">10:20</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c2">
+            <h3>萩・石見空港着</h3>
+            <p>レンタカー手続きに20～30分を見込む。</p>
+            <div class="maplinks">
+              <a href="https://hagiiwami.jp/" target="_blank" rel="noopener">萩・石見空港 公式</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">10:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c3">
+            <h3>空港出発</h3>
+            <p>萩市街まで約70分。途中で休憩が必要なら無理をしない。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/Fk3nfW3YkgtKm55m6" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+
+            <span class="tag drive">車 約70分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:00–12:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c4">
+            <h3>萩暦で昼食</h3>
+            <p>萩・明倫学舎内。萩の魚や郷土の味を楽しむ。混雑を考え、事前確認。</p>
+            <p>昼食後、HELLOCYCLINGのサイクルポートを探してレンタサイクルにて移動</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/yamaguchi/A3503/A350301/35010141/" target="_blank" rel="noopener">萩暦（食べログ）</a>
+              <a href="https://maps.app.goo.gl/dxMAjGEw6zJfmeK46" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">昼食</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:05–13:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c5">
+            <h3>高杉晋作誕生地</h3>
+            <p>今回の必訪地。城下町エリアは車を置き、徒歩中心で回る。</p>
+            <div class="maplinks">
+              <a href="https://www.hagishi.com/search/detail.php?d=100001" target="_blank" rel="noopener">高杉晋作誕生地 案内</a>
+              <a href="https://maps.app.goo.gl/9eT13tcN61ZiqZeA9" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag must">必訪</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:35–14:05</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c6">
+            <h3>木戸孝允旧宅</h3>
+            <p>桂小五郎の生家。高杉晋作誕生地から城下町を歩いて移動。</p>
+            <div class="maplinks">
+              <a href="https://www.hagishi.com/search/detail.php?d=100002" target="_blank" rel="noopener">木戸孝允旧宅 案内</a>
+              <a href="https://maps.app.goo.gl/vNs1nkxjKUx62tMm6" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag must">必訪</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">14:05–14:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c7">
+            <h3>菊屋横町・萩城下町散策</h3>
+            <p>白壁、なまこ壁、鍵曲など、城下町の雰囲気を楽しむ。</p>
+            <div class="maplinks">
+              <a href="https://www.hagishi.com/search/list.php?c0=1&c1=2" target="_blank" rel="noopener">萩城下町 観光情報</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">14:45–15:35</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c8">
+            <h3>松陰神社・松下村塾</h3>
+            <p>吉田松陰から高杉晋作、久坂玄瑞、伊藤博文らへ続く人材育成の流れを意識して見学。</p>
+            <div class="maplinks">
+              <a href="https://www.shoinjinja.org/" target="_blank" rel="noopener">松陰神社 公式</a>
+              <a href="https://maps.app.goo.gl/Jm1bCJe7XfXXbBMB8" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag must">必訪</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:35–16:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c9">
+            <h3>伊藤博文旧宅・別邸</h3>
+            <p>松陰神社周辺のため続けて訪問。閉館時刻に注意。</p>
+            <div class="maplinks">
+              <a href="https://www.hagishi.com/search/detail.php?d=100013" target="_blank" rel="noopener">伊藤博文旧宅 案内</a>
+              <a href="https://maps.app.goo.gl/3MjnwDqjhhuqYFsJ9" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">16:15–17:10</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c10">
+            <h3>萩城跡・指月公園</h3>
+            <p>毛利36万石の居城跡。夕方は天候と足元を見ながら散策。</p>
+            <div class="maplinks">
+              <a href="https://www.hagishi.com/search/list.php?c0=1&c1=1" target="_blank" rel="noopener">萩城跡・指月公園 案内</a>
+              <a href="https://maps.app.goo.gl/vHTS5U8fgJ9SUKJc7" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag must">主要行程</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">17:30頃</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c11">
+            <h3>ホテルチェックイン</h3>
+            <p>萩ロイヤルインテリジェントホテル。休憩後、徒歩または安全な交通手段で夕食へ。</p>
+            <div class="maplinks">
+              <a href="https://hrih.jp/" target="_blank" rel="noopener">萩ロイヤルインテリジェントホテル 公式</a>
+              <a href="https://maps.app.goo.gl/XwznJbswQPBHbVmy8" target="_blank" rel="noopener">Googleマップ</a>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">18:30–20:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c12">
+            <h3>居酒屋 銀</h3>
+            <p>萩の魚と日本酒。予約推奨。</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/yamaguchi/A3503/A350301/35011887/" target="_blank" rel="noopener">居酒屋 銀（食べログ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E5%B1%85%E9%85%92%E5%B1%8B+%E9%8A%80+%E8%90%A9" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">夕食</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>余裕がある場合の候補：萩博物館</h3>
+        <p>固定行程には入れない。訪れる場合は、城下町散策または萩城跡を短縮し、遅くとも16:30までに入館する。開館は9:00～17:00、最終入館16:30。高杉晋作資料室を優先する。<a href="https://www.city.hagi.lg.jp/hagihaku/" target="_blank" rel="noopener">公式サイト</a></p>
+      </div>
+    </section>
+
+    <!-- DAY 2 -->
+    <section class="day" id="d2">
+      <div class="dayhead">
+        <h2>9/28（月） 津和野・城下町と山城</h2>
+        <p class="route">萩 → 津和野</p>
+      </div>
+      <div class="timeline">
+        <div class="item">
+          <div class="time">7:00–8:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c13">
+            <h3>朝食・出発準備</h3>
+            <p>荷物を車へ。歩きやすい靴、飲料、雨具を確認。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">8:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c14">
+            <h3>ホテル出発</h3>
+            <p>萩・明倫学舎へ移動。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/za8bD669aw3yEHcV7" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">9:00–10:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c15">
+            <h3>萩・明倫学舎</h3>
+            <p>幕末ミュージアム、世界遺産ビジターセンターを中心に90分。展示を読み込みすぎないよう終了時刻を意識。</p>
+            <div class="maplinks">
+              <a href="https://hagimeirin.jp/" target="_blank" rel="noopener">萩・明倫学舎 公式</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E8%90%A9%E3%83%BB%E6%98%8E%E2%85%A4%E5%AD%A6%E8%88%8A" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">10:30–12:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c16">
+            <h3>津和野へ移動</h3>
+            <p>道路状況を見ながら約90分。到着後は中心部の駐車場へ。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/Uqv9YWY3hjw6Ysin7" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+
+            <span class="tag drive">車 約90分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:00–12:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c17">
+            <h3>沙羅の木 松韻亭で昼食</h3>
+            <p>庭園を眺めながら郷土料理。料理のご飯を「うずめ飯」に変更できるメニューを予約時に確認する。</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/shimane/A3204/A320402/32004073/" target="_blank" rel="noopener">沙羅の木（食べログ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E6%B2%99%E7%BE%85%E3%81%AE%E6%9C%A8+%E6%9D%BE%E9%9F%BB%E4%BA%AD" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">うずめ飯・予約推奨</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:50–13:35</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c18">
+            <h3>殿町通り散策</h3>
+            <p>掘割を泳ぐ鯉、白壁、旧藩校養老館周辺、津和野カトリック教会などを徒歩で巡る。</p>
+            <div class="maplinks">
+              <a href="https://www.kankou-shimane.com/destination/20244" target="_blank" rel="noopener">殿町通り 観光案内</a>
+              <a href="https://maps.app.goo.gl/n7MaADhTJf8xyKNW6" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:45–14:25</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c19">
+            <h3>太皷谷稲成神社</h3>
+            <p>参拝と境内からの眺望。徒歩で千本鳥居を上る場合は時間を多めに見る。</p>
+            <div class="maplinks">
+              <a href="https://www.kankou-shimane.com/destination/20246" target="_blank" rel="noopener">太皷谷稲成神社 公式</a>
+              <a href="https://maps.app.goo.gl/6hXmk9guFN5aNpvu8" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">14:25–14:40</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c20">
+            <h3>津和野城リフト乗り場へ</h3>
+            <p>駐車、チケット購入、トイレを済ませる。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/nqcYhfSs6knSBito9" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">14:40–15:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c21">
+            <h3>観光リフト・山上へ移動</h3>
+            <p>リフト降り場から城跡まで徒歩約20分。</p>
+            <div class="maplinks">
+              <a href="https://tsuwano-kanko.net/info/tsuwanocastle/" target="_blank" rel="noopener">津和野城観光リフト 案内</a>
+            </div>
+            <span class="tag must">下り最終16:20</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:00–15:45</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c22">
+            <h3>津和野城跡</h3>
+            <p>石垣と城下町の眺望を楽しむ。濡れた石や落ち葉に注意。</p>
+            <div class="maplinks">
+              <a href="https://tsuwano-kanko.net/info/tsuwanocas/" target="_blank" rel="noopener">津和野城跡 案内</a>
+            </div>
+            <span class="tag must">主要行程</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:45–16:15</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c23">
+            <h3>下山</h3>
+            <p>最終便に頼らず、16:20より前の下りリフトを目標とする。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">16:20–16:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c24">
+            <h3>町歩き・休憩</h3>
+            <p>源氏巻、豆茶など。時間と体力に余裕があれば永明寺も候補。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/nqcYhfSs6knSBito9" target="_blank" rel="noopener">Googleマップ（永明寺）</a>
+              
+
+            </div>            
+            <span class="tag optional">調整枠</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">17:00頃</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c25">
+            <h3>ゆとりろ津和野チェックイン</h3>
+            <p>温泉と休憩。</p>
+            <div class="maplinks">
+              <a href="https://yutorelo-tsuwano.com/" target="_blank" rel="noopener">ゆとりろ津和野 公式</a>
+              <a href="https://maps.app.goo.gl/TBmffAaUiD2AKGdj8" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">18:30–20:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c26">
+            <h3>居酒屋 蔵</h3>
+            <p>夕食。営業日と予約可否を直前確認。</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/shimane/A3204/A320402/32001882/" target="_blank" rel="noopener">居酒屋 蔵（食べログ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E5%B1%85%E9%85%92%E5%B1%8B+%E8%94%B5+%E6%B4%A5%E5%92%8C%E9%87%8E" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">夕食</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel warning">
+        <h3>雨天・強風時</h3>
+        <p>リフトが運休する可能性があるため、津和野城跡を無理に徒歩登城せず、安野光雅美術館、森鷗外記念館、永明寺などへ振り替える。</p>
+      </div>
+    </section>
+
+    <!-- DAY 3 -->
+    <section class="day" id="d3">
+      <div class="dayhead">
+        <h2>9/29（火） 石見銀山・電動レンタサイクルで巡る日</h2>
+        <p class="route">津和野 → 大森町・龍源寺間歩 → 温泉津 → 皆生温泉</p>
+      </div>
+      <div class="timeline">
+        <div class="item">
+          <div class="time">7:00–7:40</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c27" type="checkbox"/>
+            <h3>朝食・チェックアウト</h3>
+            <p>長距離移動と徒歩観光に備え、飲料・雨具・歩きやすい靴を準備。自転車利用時は荷物を最小限にする。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">8:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c28" type="checkbox"/>
+            <h3>津和野出発</h3>
+            <p>大森町方面へ。大森代官所前駐車場に駐車し、10時頃の到着を目標にする。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/pBk1FBJP2VFVA8gA9" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+            <span class="tag drive">車 約2時間</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">10:00–11:05</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c29" type="checkbox"/>
+            <h3>大森町並み散策（徒歩）</h3>
+            <p><strong>先に町並みを見る方式。</strong> 車を置いて、江戸幕府の直轄地だった鉱山町を徒歩で味わう。</p>
+            <ol class="course">
+              <li>大森代官所跡・城上神社</li>
+              <li>熊谷家住宅の外観</li>
+              <li>武家・町家が続く町並み</li>
+              <li>観世音寺周辺</li>
+              <li>時間があれば高台から町を眺める</li>
+            </ol>
+            <p>9/29は最終火曜日のため、屋内施設は無理に入れず、町並みと外観を中心にする。</p>
+            <div class="maplinks">
+              <a href="https://ginzan.city.oda.lg.jp/highlights/walking_map/" target="_blank" rel="noopener">公式・散策マップ一覧</a>
+            </div>
+            <span class="tag must">徒歩・約65分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">11:05–11:20</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c30" type="checkbox"/>
+            <h3>電動レンタサイクルを借りる</h3>
+            <p>大森代官所跡付近のレンタサイクルを利用。電動アシストを第一候補にする。貸出時に返却時刻・雨天時対応・走行可能範囲を確認。</p>
+            <div class="maplinks">
+              <a href="https://www.ginzan-wm.jp/purpose_post/bicyclerental_kawamura/" target="_blank" rel="noopener">レンタサイクル河村</a>
+              <a href="https://maps.app.goo.gl/GUSsjidLbYSndKhLA" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag must">電動推奨</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">11:20–11:40</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c31" type="checkbox"/>
+            <h3>自転車で龍源寺間歩へ</h3>
+            <p>銀山街道を進み、豊栄神社・清水寺周辺など、気になる場所で短く停車して見学。徒歩より移動時間を圧縮する。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/4EHbmtb9R5Kwhm9Y9" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag drive">自転車</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">11:40–12:10</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c32">
+            <h3>龍源寺間歩を自由散策</h3>
+            <p><strong>コンセプト：</strong>銀山公園から銀山街道を歩き、坑道だけでなく、採掘場へ続く谷筋と周辺の鉱山遺跡を自分のペースで体感する。</p>
+            <p><strong>所要：</strong>約2時間20分。銀山公園から龍源寺間歩まで片道約2.3km・徒歩約45分、坑内見学約20分、寄り道と休憩を含む。</p>
+            <ol class="course">
+              <li>銀山公園を出発</li>
+              <li>豊栄神社、清水寺周辺などを見ながら銀山街道を進む</li>
+              <li>龍源寺間歩を自由見学</li>
+              <li>同じ道を銀山公園へ戻る</li>
+            </ol>
+            <p>ガイドは必須ではなく個人で入場可能。龍源寺間歩は常時一般公開されている坑道で、公開区間を自分のペースで見学できる。</p>
+            <div class="maplinks">
+              <a href="https://ginzan.city.oda.lg.jp/highlights/walking_map/" target="_blank" rel="noopener">銀山ゾーン散策マップ</a>
+            </div>
+            <span class="tag must">主要行程・自由見学</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:10–12:35</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c33" type="checkbox"/>
+            <h3>自転車で大森町へ戻る</h3>
+            <p>帰路は寄り道を抑え、昼食へ。自転車は借りた場所へ返却する前提。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:35–13:20</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c34" type="checkbox"/>
+            <h3>大森町で昼食</h3>
+            <p>「お食事処おおもり」を第一候補。混雑時は待ち時間を優先して別店へ切り替える。</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/shimane/A3203/A320302/32000164/" target="_blank" rel="noopener">お食事処おおもり（食べログ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8A%E9%A3%9F%E4%BA%8B%E5%87%A6%E3%81%8A%E3%81%8A%E3%82%82%E3%82%8A+%E7%9F%B3%E8%A6%8B%E9%8A%80%E5%B1%B1" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">昼食</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:20–13:45</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c35" type="checkbox"/>
+            <h3>レンタサイクル返却・休憩</h3>
+            <p>返却、トイレ、飲料補給、土産購入。ここを調整枠として使い、遅れを吸収する。</p>
+            <span class="tag optional">調整枠</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:45–14:10</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c36" type="checkbox"/>
+            <h3>温泉津へ移動</h3>
+            <p>銀山から積出港へつながる歴史を意識して移動。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/cJ6tTR3MzQen5wbw6" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+            <span class="tag drive">車 約25分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">14:10–15:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c37" type="checkbox"/>
+            <h3>温泉津温泉街を散策</h3>
+            <p><strong>コンセプト：</strong>銀山を支えた港町と温泉街の歴史的景観を短時間で味わう。</p>
+            <p><strong>所要：</strong>約40分。元湯、薬師湯、温泉街の町並みを往復。今回は入浴せず散策に絞る。</p>
+            <div class="maplinks">
+              <a href="https://www.kankou-shimane.com/mag/ginzan/988.html" target="_blank" rel="noopener">温泉津温泉・観光案内</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E6%B8%A9%E6%B3%89%E6%B4%A5%E6%B8%A9%E6%B3%89" target="_blank" rel="noopener">温泉津を地図で開く</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c38" type="checkbox"/>
+            <h3>温泉津出発</h3>
+            <p>皆生温泉へ。途中休憩込みで余裕を持って移動する。</p>
+            <span class="tag drive">長距離移動</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">17:30頃</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c39" type="checkbox"/>
+            <h3>皆生温泉 芙蓉別館チェックイン</h3>
+            <div class="maplinks">
+              <a href="https://www.fu-yo.net/" target="_blank" rel="noopener">芙蓉別館 公式</a>
+              <a href="https://maps.app.goo.gl/EYxWeZZan5x4HirL8" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <p>到着後は温泉・休憩。夕食の順番待ち状況を確認する。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">19:00頃</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c40" type="checkbox"/>
+            <h3>回転すし北海道 皆生店</h3>
+            <p>人気店のため、移動中に同乗者が営業状況と順番待ちを確認。到着遅延に備えて代替店も用意する。</p>
+            <div class="maplinks">
+              <a href="https://tabelog.com/tottori/A3103/A310301/31002126/" target="_blank" rel="noopener">回転すし北海道（食べログ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E5%9B%9E%E8%BB%A2%E3%81%99%E3%81%97%E5%8C%97%E6%B5%B7%E9%81%93+%E7%9A%86%E7%94%9F%E5%BA%97" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">夕食</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">20:30以降</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" id="c41" type="checkbox"/>
+            <h3>ホテル・温泉</h3>
+            <p>この日は歩行＋自転車＋長距離運転の日。入浴後は早めに休む。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel warning">
+        <h3>9/29のレンタサイクル運用ルール</h3>
+        <ul>
+          <li><strong>電動アシストを第一候補。</strong> 銀山街道には坂道があるため、普通自転車より体力を温存できる。</li>
+          <li><strong>借りる前に必ず確認：</strong>9/29（火）の営業、在庫、貸出時間、返却時刻、雨天時の営業、身分証等の必要条件。</li>
+          <li>レンタサイクルを使っても、<strong>大森町並みは徒歩中心</strong>にする。自転車で町並みを流すより、歩いて建物や路地を見る方が今回のテーマに合う。</li>
+          <li>雨天・強風時は自転車を無理に使わず、ぎんざんカート等の運行状況を確認する。</li>
+          <li><strong>13:45までに大森を出発</strong>できれば、温泉津50分＋皆生温泉への移動に余裕を確保できる。</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>この日の狙い</h3>
+        <p><strong>町並みは歩く、銀山街道は自転車で走る。</strong> 大森町の歴史的景観を徒歩で味わった後、電動自転車で龍源寺間歩までの距離を短縮することで、4.6kmの往復歩行を避ける。浮いた時間と体力を温泉津と皆生温泉に回す。</p>
+      </div>
+    </section>
+
+    <!-- DAY 4 -->
+    <section class="day" id="d4">
+      <div class="dayhead">
+        <h2>9/30（水） 出雲大社から米子空港へ</h2>
+        <p class="route">皆生温泉 → 出雲大社 → かねや → 稲佐の浜 → 米子空港</p>
+      </div>
+      <div class="timeline">
+        <div class="item">
+          <div class="time">7:00–8:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c42">
+            <h3>朝食</h3>
+            <p>荷物整理も並行し、9:00出発を守る。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">9:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c43">
+            <h3>皆生温泉出発</h3>
+            <p>出雲大社まで約75分を想定。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/2en2D2Yx6v7NgyTZ7" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+
+            <span class="tag drive">車 約75分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">10:15–11:45</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c44">
+            <h3>出雲大社参拝</h3>
+            <p><strong>コンセプト：</strong>正門から正式な動線をたどり、大国主大神の国譲り神話と神在月の信仰を意識して境内を巡る。</p>
+            <p><strong>所要：</strong>約90分。勢溜 → 祓社 → 松の参道 → 手水舎 → 銅鳥居 → 拝殿 → 八足門・御本殿周辺 → 西側遥拝所 → 素鵞社 → 神楽殿。</p>
+            <p>出雲大社の拝礼は二礼四拍手一礼。混雑時は素鵞社などの寄り道を調整する。</p>
+            <div class="maplinks">
+              <a href="https://izumooyashiro.or.jp/" target="_blank" rel="noopener">出雲大社 公式</a>
+              <a href="https://izumooyashiro.or.jp/precinct/zeniki" target="_blank" rel="noopener">境内全域図</a>
+              <a href="https://izumo-kankou.gr.jp/676" target="_blank" rel="noopener">公式参拝ルート</a>
+            </div>
+            <span class="tag must">主要行程</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">11:45–12:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c45">
+            <h3>かねやへ徒歩移動</h3>
+            <p>大社門前から徒歩約5分。神迎の道側へ向かう。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:00–12:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c46">
+            <h3>そば処 かねや</h3>
+            <p>昔ながらの本格出雲そば。第一候補は三色割子3段。平日の営業時間は10:30～14:00で、水曜日は営業予定。予約不可を前提に早めに並ぶ。</p>
+            <div class="maplinks">
+              <a href="https://kaneyasoba.com/" target="_blank" rel="noopener">かねや公式サイト</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E3%81%9D%E3%81%B0%E5%87%A6%E3%81%8B%E3%81%AD%E3%82%84+%E5%88%B0%E9%9B%B2" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+            <span class="tag food">昼食</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">12:50–13:15</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c47">
+            <h3>神門通り散策</h3>
+            <p><strong>コンセプト：</strong>参拝後の門前町を歩き、土産と甘味を短時間で楽しむ。</p>
+            <p><strong>所要：</strong>約25分。勢溜周辺から一畑電車出雲大社前駅方向へ歩き、駐車場所へ戻る。</p>
+            <div class="maplinks">
+              <a href="https://saninmanabi.com/sightseeing/626/" target="_blank" rel="noopener">神門通り散策のススメ</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E9%96%80%E9%80%9A%E3%82%8A" target="_blank" rel="noopener">Googleマップ</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:15–13:25</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c48">
+            <h3>稲佐の浜へ移動</h3>
+            <p>駐車場の混雑を考慮。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/c9qxh4YVkBR8gJc3A" target="_blank" rel="noopener">Googleマップ（駐車場）</a>
+            </div>
+            <span class="tag drive">車 約10分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:25–13:50</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c49">
+            <h3>稲佐の浜</h3>
+            <p><strong>コンセプト：</strong>国譲り神話と神迎神事の舞台で、出雲大社参拝を神話の海辺までつなげる。</p>
+            <p><strong>所要：</strong>約25分。弁天島周辺を短く散策。海況が悪い場合は波打ち際へ近づかず、滞在を短縮する。</p>
+            <div class="maplinks">
+              <a href="https://www.kankou-shimane.com/destination/20281" target="_blank" rel="noopener">稲佐の浜（しまね観光ナビ）</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=%E7%A8%B2%E4%BD%90%E3%81%AE%E6%B5%9C" target="_blank" rel="noopener">稲佐の浜を地図で開く</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">13:50–15:30</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c50">
+            <h3>米子空港へ移動</h3>
+            <p>渋滞と給油を考慮し、寄り道はしない。レンタカー会社指定の給油所も確認。</p>
+            <div class="maplinks">
+              <a href="https://maps.app.goo.gl/bNtrA6ApH4gh9LLi8" target="_blank" rel="noopener">Googleマップ</a>
+            </div>            
+            <span class="tag drive">車 約1時間40分</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">15:30–16:00</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c51">
+            <h3>レンタカー返却</h3>
+            <p>忘れ物、給油レシート、車内確認。</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">16:00–16:45</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c52">
+            <h3>空港で休憩・買い物</h3>
+            <p>保安検査は余裕をもって通過。</p>
+            <div class="maplinks">
+              <a href="https://yonago-air.com/" target="_blank" rel="noopener">米子鬼太郎空港 公式</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="time">17:15</div>
+          <div class="dot"></div>
+          <div class="content">
+            <input class="check" type="checkbox" id="c53">
+            <h3>米子空港発</h3>
+            <p>羽田18:50着予定。</p>
+            <span class="tag drive">飛行機</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel warning">
+        <h3>昼食が混雑した場合</h3>
+        <p>かねやは予約なしでの利用を想定。12:30時点で着席できない場合は、神門通り散策を短縮し、13:10を昼食終了の判断時刻とする。9/30は水曜営業予定だが、旅行直前に公式サイトか電話で臨時休業を確認する。</p>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section class="day" id="check">
+      <div class="dayhead">
+        <h2>予約・直前確認リスト</h2>
+        <p>出発前にスマホでチェック</p>
+      </div>
+      <div class="panel reserve">
+        <h3>予約優先度：高</h3>
+        <ul>
+          <li>レンタカー：萩・石見空港受取、米子空港返却の乗り捨て条件</li>
+          <li>9/27 居酒屋 銀</li>
+          <li>9/28 沙羅の木 松韻亭：うずめ飯への変更可否を含めて確認</li>
+          <li>9/29 龍源寺間歩の営業状況とチケット販売場所</li>
+          <li>9/28 居酒屋 蔵</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>2～3日前に確認</h3>
+        <ul>
+          <li>各日の天気、道路規制、所要時間</li>
+          <li>津和野城観光リフトの運行状況と最終下り便</li>
+          <li>石見銀山の交通規制、ガイド集合場所</li>
+          <li>回転すし北海道 皆生店の順番受付方法</li>
+          <li>9/30 そば処かねやの水曜営業・臨時休業</li>
+          <li>航空便、レンタカー営業所、ホテルの予約内容</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      <h2>情報メモ</h2>
+      <ul>
+        <li>萩博物館は9:00～17:00、最終入館16:30。</li>
+        <li>津和野城観光リフトは9:00～16:30、下り最終16:20。気象条件で運休する場合あり。</li>
+        <li>龍源寺間歩はガイドなしで自由見学可能。銀山公園から片道約2.3km、徒歩約45分。</li>
+        <li>石見銀山世界遺産センターは9/29が最終火曜日のため、本行程には組み込まない。</li>
+      </ul>
+      <p>作成時点：2026年9月3日。営業時間、休館日、道路状況、運行情報は変更される場合があります。</p>
+    </div>
+  </main>
+
+  <a class="top" href="#top" aria-label="ページ上部へ">↑</a>
+
+  <script>
+    // チェックボックスの状態保存処理
+    document.querySelectorAll('.check').forEach(x => {
+      x.checked = localStorage.getItem('trip-' + x.id) === '1';
+      x.addEventListener('change', () => localStorage.setItem('trip-' + x.id, x.checked ? '1' : '0'));
+    });
+
+    // スクロール途中でナビゲーションリンクを押した際のジャンプ制御
+    document.querySelectorAll('#navbar a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const navHeight = document.getElementById('navbar').offsetHeight || 50;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navHeight - 10;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
